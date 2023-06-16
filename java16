@@ -1,0 +1,57 @@
+1. An exception in Java is an event that occurs during the execution of a program that disrupts the normal flow of instructions. 
+It represents an error or exceptional condition that may occur during program execution.
+Exceptions are typically caused by runtime errors, such as division by zero or accessing an invalid index in an array. 
+Errors, on the other hand, indicate serious problems that are typically beyond the control of the program, 
+such as system failures or out-of-memory conditions.
+
+2. The purpose of exception handling in Java is to provide a mechanism to handle and recover from exceptional situations in a controlled manner.
+It allows developers to write code that can detect and handle exceptions gracefully,
+preventing the program from crashing or producing incorrect results. 
+Exception handling is important because it improves the reliability and robustness of programs,
+making them more resistant to errors and failures.
+
+3. In Java, exceptions are divided into two categories: checked exceptions and unchecked exceptions. 
+
+   - Checked exceptions: These are exceptions that must be declared in the method signature 
+   using the `throws` clause or handled explicitly using a try-catch block. They are checked by the compiler at compile-time to ensure 
+   that proper exception handling is provided. Examples of checked exceptions include IOException, SQLException, and ClassNotFoundException.
+
+   - Unchecked exceptions: These are exceptions that do not require explicit handling or declaration. 
+   
+   They are subclasses of RuntimeException or Error. Unchecked exceptions are not checked at compile-time, 
+   allowing them to propagate up the call stack until they are caught and handled or cause the program to terminate.
+   Examples of unchecked exceptions include NullPointerException, ArrayIndexOutOfBoundsException, and IllegalArgumentException.
+
+4. The difference between checked and unchecked exceptions lies in how they are handled by the compiler and the programmer.
+
+   - Checked exceptions: The compiler enforces that checked exceptions must either be handled using
+   a try-catch block or declared in the method signature using the `throws` clause. 
+   The programmer is forced to acknowledge and handle these exceptions explicitly.
+
+   - Unchecked exceptions: These exceptions do not need to be explicitly handled or declared. 
+   The compiler does not enforce catching or declaring them, leaving it to the programmer's discretion. 
+   Unchecked exceptions are typically used for programming errors or exceptional conditions that should not normally occur during the execution of the program.
+
+5. Exception handling in Java is done using the try-catch-finally block:
+
+  
+   try {
+       // Code that may throw an exception
+   } catch (ExceptionType1 e1) {
+       // Handle exception of type ExceptionType1
+   } catch (ExceptionType2 e2) {
+       // Handle exception of type ExceptionType2
+   } finally {
+       // Code that always executes, regardless of whether an exception occurred
+   }
+   ```
+
+   The `try` block contains the code that may throw an exception. If an exception occurs, it is caught by one of the catch blocks that matches the type of the exception. The catch block handles the exception by providing code to be executed in response to the exception. The `finally` block contains code that always executes, regardless of whether an exception occurred. It is typically used to perform cleanup operations or release resources.
+
+6. The `finally` block in exception handling serves the purpose of executing code that should always run, regardless of whether an exception occurred or was caught. It ensures that any necessary cleanup operations are performed, such as closing files or releasing resources, regardless of whether an exception was thrown or caught. An example scenario where the `finally` block is useful is when working with file I/O operations. Even if an exception occurs during reading or writing a file, the `finally` block can be used to close the file and release system resources.
+
+  
+   FileInputStream file = null;
+   try {
+       file = new FileInputStream("example.txt");
+       // Code for reading the file
